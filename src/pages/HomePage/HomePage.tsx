@@ -1,13 +1,32 @@
 import { Helmet } from "react-helmet";
-import { TestDiv } from "./styled";
+
+import ProductCard from "blocks/ProductCard";
+import { dummyProducts } from "pages/dummyProducts";
+import { PageWrapper } from "App.styled";
+import { ProductGroup, ProductGroupContainer } from "./styled";
 
 const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>Главная pfujkjdjr</title>
+        <title>Главная - MW Marketplace</title>
       </Helmet>
-      <TestDiv>Главная</TestDiv>
+
+      <PageWrapper>
+        <ProductGroup>
+          <h2>Рекомендуемые товары</h2>
+
+          <ProductGroupContainer>
+            {dummyProducts.map((p) => (
+              <ProductCard
+                {...p}
+                key={p.id}
+                // isLiked={idsInFavorites.includes(p.id)}
+              />
+            ))}
+          </ProductGroupContainer>
+        </ProductGroup>
+      </PageWrapper>
     </>
   );
 };
